@@ -13,7 +13,7 @@ const plotsManager = new function () {
      * Number of milliseconds to wait after resizing.
      * @type {Number}
      */
-    const waitTime = 200;
+    const waitTime = 300;
 
     let resizeTimeout;
 

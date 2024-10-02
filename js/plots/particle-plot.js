@@ -296,8 +296,8 @@ let particlePlot = function (id, options = {
     function updatePhysics() {
         // Updates the velocity based on mouse/touch position
         if (mouseDown) {
-            velocity.x = mouse.x - particle.x;
-            velocity.y = mouse.y - particle.y;
+            velocity.x = (mouse.x - particle.x) / 2;
+            velocity.y = (mouse.y - particle.y) / 2;
         } else {
             velocity.x = Math.abs(velocity.x) > .5 ? .95 * velocity.x : 0;
             velocity.y = Math.abs(velocity.y) > .5 ? .95 * velocity.y : 0;
