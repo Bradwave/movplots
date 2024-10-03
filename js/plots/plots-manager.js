@@ -54,8 +54,8 @@ const plotsManager = new function () {
             'axis-position',
             new physicalPlot("axis-position", options = {
                 maxNumOfValues: 300,
-                scale: .05,
-                yStartingPoint: .75,
+                scale: 100,
+                yStartingPoint: .5,
                 color: "rgb(150, 150, 150)"
             })
         );
@@ -72,7 +72,7 @@ const plotsManager = new function () {
             'axis-acceleration',
             new physicalPlot("axis-acceleration", options = {
                 maxNumOfValues: 300,
-                scale: .5,
+                scale: 1.5,
                 yStartingPoint: .5,
                 color: "rgb(176, 26, 0)"
             })
@@ -90,7 +90,7 @@ const plotsManager = new function () {
             'abs-acceleration',
             new physicalPlot("abs-acceleration", options = {
                 maxNumOfValues: 300,
-                scale: 1,
+                scale: 3,
                 yStartingPoint: .9,
                 color: "rgb(176, 26, 0)"
             })

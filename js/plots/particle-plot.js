@@ -95,12 +95,12 @@ let particlePlot = function (id, options = {
     /**
      * Max number of stored accelerations and positions of the charged particle.
      */
-    let eventsSize = 200;
+    let eventsSize = 400;
 
     /**
      * Number of frames over which acceleration is averaged.
      */
-    let avgTime = 10;
+    let avgTime = 20;
 
     /*_______________________________________
     |   Plot update
@@ -352,7 +352,7 @@ let particlePlot = function (id, options = {
     */
 
     function updatePhysicalPlots() {
-        physicalPlots.get('axis-position').setValues(particleEvents.map(particleEvents => particleEvents.x));
+        physicalPlots.get('axis-position').setValues(particleEvents.map(particleEvents => (particleEvents.x - width / 2) / width));
         physicalPlots.get('axis-position').drawPlot();
 
         physicalPlots.get('axis-velocity').setValues(particleEvents.map(particleEvents => particleEvents.xVelocity));
