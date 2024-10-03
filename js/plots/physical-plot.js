@@ -158,7 +158,7 @@ let physicalPlot = function (id) {
         // Clears the canvas
         publicAPIs.clearPlot();
 
-        ctx.strokeStyle = "rgb(50, 50, 50)";
+        ctx.strokeStyle = "rgb(100, 100, 100)";
 
         ctx.beginPath();
         ctx.moveTo(0, yStartingPoint * height);
