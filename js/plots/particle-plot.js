@@ -324,7 +324,9 @@ let particlePlot = function (id, options = {
             x: particle.x,
             y: particle.y,
             xVelocity: velocity.x,
+            yVelocity: velocity.y,
             xAcceleration: acceleration.x,
+            yAcceleration: acceleration.y,
             velocityAbs: Math.sqrt(velocity.x * velocity.x + velocity.y * velocity.y),
             accelerationAbs: Math.sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y),
             angle: Math.atan2(acceleration.x, acceleration.y)
@@ -352,20 +354,32 @@ let particlePlot = function (id, options = {
     */
 
     function updatePhysicalPlots() {
-        physicalPlots.get('axis-position').setValues(particleEvents.map(particleEvents => (particleEvents.x - width / 2) / width));
-        physicalPlots.get('axis-position').drawPlot();
+        physicalPlots.get('axis-position').setValues([
+            particleEvents.map(particleEvents => (particleEvents.y - height / 2) / height),
+            particleEvents.map(particleEvents => (particleEvents.x - width / 2) / width)
+        ]);
 
-        physicalPlots.get('axis-velocity').setValues(particleEvents.map(particleEvents => particleEvents.xVelocity));
-        physicalPlots.get('axis-velocity').drawPlot();
+        physicalPlots.get('axis-velocity').setValues([
+            particleEvents.map(particleEvents => particleEvents.yVelocity),
+            particleEvents.map(particleEvents => particleEvents.xVelocity)
+        ]);
 
-        physicalPlots.get('axis-acceleration').setValues(particleEvents.map(particleEvents => particleEvents.xAcceleration));
-        physicalPlots.get('axis-acceleration').drawPlot();
+        physicalPlots.get('axis-acceleration').setValues([
+            particleEvents.map(particleEvents => particleEvents.yAcceleration),
+            particleEvents.map(particleEvents => particleEvents.xAcceleration)
+        ]);
 
-        physicalPlots.get('abs-velocity').setValues(particleEvents.map(particleEvents => particleEvents.velocityAbs));
-        physicalPlots.get('abs-velocity').drawPlot();
+        physicalPlots.get('abs-velocity').setValues([
+            particleEvents.map(particleEvents => particleEvents.velocityAbs)
+        ]);
 
-        physicalPlots.get('abs-acceleration').setValues(particleEvents.map(particleEvents => particleEvents.accelerationAbs));
-        physicalPlots.get('abs-acceleration').drawPlot();
+        physicalPlots.get('abs-acceleration').setValues([
+            particleEvents.map(particleEvents => particleEvents.accelerationAbs)
+        ]);
+
+        physicalPlots.forEach(p => {
+            p.drawPlot();
+        });
     }
 
     /**
@@ -387,7 +401,7 @@ let particlePlot = function (id, options = {
         ctx.strokeStyle = "rgb(176, 26, 0)";
         ctx.lineWidth = 8;
         ctx.moveTo(particle.x, particle.y);
-        ctx.lineTo(particle.x + 2 * acceleration.x, particle.y + 2 * acceleration.y);
+        ctx.lineTo(particle.x + 8 * acceleration.x, particle.y + 8 * acceleration.y);
         ctx.stroke();
 
         // Draws the charged particle

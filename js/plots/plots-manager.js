@@ -56,7 +56,7 @@ const plotsManager = new function () {
                 maxNumOfValues: 300,
                 scale: 100,
                 yStartingPoint: .5,
-                color: "rgb(150, 150, 150)"
+                colors: ["rgb(180, 180, 180)", "rgb(120, 120, 120)"]
             })
         );
         physicalPlots.set(
@@ -65,16 +65,16 @@ const plotsManager = new function () {
                 maxNumOfValues: 300,
                 scale: .1,
                 yStartingPoint: .5,
-                color: "rgb(255, 255, 255)"
+                colors: ["rgb(255, 255, 255)", "rgb(150, 150, 150)"]
             })
         );
         physicalPlots.set(
             'axis-acceleration',
             new physicalPlot("axis-acceleration", options = {
                 maxNumOfValues: 300,
-                scale: 1.5,
+                scale: 3,
                 yStartingPoint: .5,
-                color: "rgb(176, 26, 0)"
+                colors: ["rgb(176, 26, 0)", "rgb(110, 16, 0)"]
             })
         );
         physicalPlots.set(
@@ -83,7 +83,7 @@ const plotsManager = new function () {
                 maxNumOfValues: 300,
                 scale: .2,
                 yStartingPoint: .9,
-                color: "rgb(255, 255, 255)"
+                colors: ["rgb(255, 255, 255)"]
             })
         );
         physicalPlots.set(
@@ -92,7 +92,7 @@ const plotsManager = new function () {
                 maxNumOfValues: 300,
                 scale: 3,
                 yStartingPoint: .9,
-                color: "rgb(176, 26, 0)"
+                colors: ["rgb(176, 26, 0)"]
             })
         );
 

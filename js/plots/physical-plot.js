@@ -40,7 +40,7 @@ let physicalPlot = function (id) {
 
     let yStartingPoint = options.yStartingPoint;
 
-    let color = options.color;
+    let colors = options.colors;
 
     /*_______________________________________
     |   Plot update
@@ -53,9 +53,6 @@ let physicalPlot = function (id) {
     publicAPIs.update = function () {
         // Resizes the canvas
         publicAPIs.resizeCanvas();
-
-        ctx.strokeStyle = color;
-        ctx.lineWidth = 1.5;
 
         // Restarts the simulation
         publicAPIs.playAnimation();
@@ -159,22 +156,27 @@ let physicalPlot = function (id) {
         publicAPIs.clearPlot();
 
         ctx.strokeStyle = "rgb(100, 100, 100)";
+        ctx.lineWidth = 1;
 
         ctx.beginPath();
         ctx.moveTo(0, yStartingPoint * height);
         ctx.lineTo(width, yStartingPoint * height)
         ctx.stroke();
 
-        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.5;
 
-        ctx.beginPath();
-        ctx.moveTo(width + 1, yStartingPoint * height);
-        for (let i = 0; i < values.length; i = i + 2) {
-            ctx.lineTo(
-                width - width * i / values.length,
-                yStartingPoint * height - values[i] * scale)
-        }
-        ctx.stroke();
+        values.forEach((v, j) => {
+            ctx.strokeStyle = colors[j];
+
+            ctx.beginPath();
+            ctx.moveTo(width + 1, yStartingPoint * height);
+            for (let i = 0; i < v.length; i = i + 2) {
+                ctx.lineTo(
+                    width - width * i / v.length,
+                    yStartingPoint * height - v[i] * scale)
+            }
+            ctx.stroke();
+        })
     }
 
     /**
